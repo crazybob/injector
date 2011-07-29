@@ -8,13 +8,6 @@ package org.atinject;
  */
 public interface Injector {
 
-  /*
-   * Ideas for child injectors:
-   *
-   *   1. The child injector type could extend the parent type.
-   *   2. You could create a child injector by injecting it.
-   */
-
   /**
    * Creates Injector instances at run time.
    */
@@ -58,6 +51,20 @@ public interface Injector {
       } catch (ClassNotFoundException e) {
         throw new AssertionError(e);
       }
+    }
+
+    /**
+     * Creates a child injector.
+     *
+     * @param parent injector
+     * @param childType
+     * @param <P>
+     * @param <C>
+     * @return
+     */
+    public static <P extends Injector, C extends ChildInjector<P>> C create(P parent,
+        Class<C> childType) {
+      throw new UnsupportedOperationException();
     }
   }
 }
